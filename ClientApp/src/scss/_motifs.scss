@@ -1,0 +1,58 @@
+/**
+	The Motifs file contains constants that define "the look" of UL
+
+	These aren't necessarily components or discrete sets of styles, but they can
+	contribute to the look of UL.
+*/
+
+/**
+	Drop shadows
+	--
+	geometry in drop shadows should be consistent.
+*/
+$shadow-x: 0;
+$shadow-y: 1px;
+$shadow-blur: 2px;
+//$shadow-color: rgba(0, 0, 0, 0.1);
+$shadow-color: rgba(0, 0, 0, 0.3);
+
+$drop-shadow: $shadow-x $shadow-y $shadow-blur $shadow-color;
+$drop-shadow-hover: $shadow-x*2 $shadow-y*2 $shadow-blur*2 $shadow-color;
+
+$a11y-shadow-x: 0;
+$a11y-shadow-y: 1px;
+$a11y-shadow-blur: 5px;
+$a11y-shadow-color: rgba(0,0,0,0.6);
+
+$a11y-drop-shadow: $a11y-shadow-x $a11y-shadow-y $a11y-shadow-blur $a11y-shadow-color;
+$a11y-drop-shadow-hover: $a11y-shadow-x $a11y-shadow-y $a11y-shadow-blur*2 $a11y-shadow-color;
+
+/**
+	Transitions
+	--
+
+*/
+$transition: ease-in-out 200ms;
+
+/**
+	To use
+	@extend %dropshadow;
+*/
+%dropshadow {
+	transition: box-shadow $transition;
+	box-shadow: $drop-shadow;
+	&:hover, &:focus {
+		box-shadow: $drop-shadow-hover;
+	}
+
+	.enhanced-a11y & {
+		box-shadow: $a11y-drop-shadow;
+		&:hover, &:focus {
+			box-shadow: $a11y-drop-shadow-hover;
+		}
+	}
+}
+
+%rounded {
+	border-radius: 0.2rem;
+}

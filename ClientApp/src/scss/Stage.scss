@@ -1,0 +1,86 @@
+@import "_Colors";
+@import "BEM";
+//@import "_mixin.scss";
+
+.stage {
+	&__section,
+	&__header,
+	&__footer {
+		padding: 1rem;
+		background-color: $ul-white;
+
+        @include modifier('flow-hide'){
+            overflow-x: hidden;
+        }
+	}
+
+	&__section--full-bleed {
+		padding: 0;
+	}
+
+
+	@include element('scrim') {
+
+		@include modifier('no-shadow') {
+			background: #e6ebf0 !important;
+			background-image:none !important;
+			box-shadow:none !important;
+		}
+
+		@include modifier('xs') {
+			padding: 0.5vw;
+		}
+
+		@include modifier('sm') {
+			padding: 1vw;
+		}
+
+		@include modifier('md') {
+			padding: 3vw;  // default, but allowed to be explicit
+		}
+
+		@include modifier('lg') {
+			padding: 5vw;
+		}
+
+		@include modifier('xl') {
+			padding: 7vw;
+		}
+
+		padding: 3vw;
+		box-shadow: 0 0 2px 0 $ul-gray inset;
+
+		&:last-child {
+			box-shadow: none;
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#939598+0,e6ebf0+1 */
+			background: #939598; /* Old browsers */
+			background: -moz-linear-gradient(top, #939598 0%, #e6ebf0 2px); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top, #939598 0%,#e6ebf0 2px); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom, #939598 0%,#e6ebf0 2px); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#939598', endColorstr='#e6ebf0',GradientType=0 ); /* IE6-9 */
+		}
+
+		/*
+			Scrim spaces its children.
+		*/
+		> * + * {
+			margin-top: 1rem;
+		}
+	}
+
+	@include element('footer') {
+		padding: 1em;
+		background-color: $ul-white;
+	}
+}
+
+// this might seem weird, but this will perform a cartesian FOIL on the set
+.stage__header, .stage__section, .stage__footer {
+	& + & {
+		border-top: .1em solid $ul-gray-light;
+	}
+}
+
+
+
+

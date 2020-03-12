@@ -1,0 +1,66 @@
+@import "../../scss/BEM.scss";
+@import "../../scss/Colors.scss";
+
+table, th, td {
+  ////border: 1px solid #e6ebf0;
+}
+
+tr {
+  //margin-bottom: 20px;
+}
+
+
+.searchSchemeTable {
+  width: 100%;
+  border: none;
+
+  @include element ('search-col') {
+    width: 60%
+  }
+}
+
+.cert-pagination {
+  padding-right: 25px;
+}
+
+
+.certificationTable {
+  margin: 10px 10px 10px 10px;
+  width: 98%;
+  border: 1px solid #e6ebf0;
+  background-color: #e6ebf0;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  border: 1px solid #e6ebf0;
+
+  @include element('row') {
+    border: 1px solid #e6ebf0;
+    background-color: white;
+    margin-bottom: 20px;
+
+    @include modifier('cell') {
+      border: 1px solid #e6ebf0;
+    }
+
+    @include modifier('scheme-cell') {
+      border: 1px solid #e6ebf0;
+      width:60%;
+    }
+  }
+
+  @include element('header') {
+    border: 1px solid #e6ebf0;
+    background-color: white;
+  }
+}
+
+.certificationLink {
+  text-decoration: none;
+  cursor: pointer !important;
+  color: $ul-gray-dark1;
+
+  &:hover, &:focus {
+    color: $ul-gray-dark1;
+    text-decoration: underline;
+  }
+}

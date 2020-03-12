@@ -1,0 +1,69 @@
+$layer-height: 1000;
+$z-step: 10;
+
+/*
+    0
+    --
+    the very bottom of the project
+    exists for legacy.
+*/
+$z-bottom: 0;
+$z-bottom-pinned: $z-bottom + $z-step;
+
+/*
+    1000
+    --
+    content areas
+*/
+$z-content: $z-bottom + $layer-height; // 1000
+$z-bucket: $z-content + $z-step;
+
+$z-bucket-action: $z-bucket + $z-step;
+$z-bucket-content: $z-bucket-action + $z-step;
+
+/*
+	2000
+	--
+	z-palette
+*/
+$z-palette: $z-content + $layer-height;
+
+/*
+    3000
+    --
+    nav (rail)
+*/
+$z-nav: $z-palette + $layer-height;
+
+/*
+    4000
+    --
+    header
+*/
+$z-header: $z-nav + $layer-height;
+
+/*
+    5000
+    ---
+    modal-backdrop
+    modal
+    modal-pinned
+*/
+$z-modal-backdrop: $z-header + $layer-height;
+$z-modal: $z-modal-backdrop + $z-step;
+$z-modal-pinned: $z-modal + $z-step;
+
+/*
+    6000
+    --
+    loading-backdrop
+    loading
+*/
+$z-loading-backdrop: $z-modal + $layer-height; // 5000
+$z-loading: $z-loading-backdrop + $z-step;
+
+/*
+	DO NOT WRITE STYLES IN THIS FILE.
+	--
+	This file should be included wherever you need to reference a calculated z-index.
+*/

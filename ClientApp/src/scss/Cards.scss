@@ -1,0 +1,201 @@
+@import "_Constants.scss";
+@import "BEM.scss";
+
+$card-spacing: 1rem;
+
+
+
+.deck, .cards {
+	//position: absolute;
+	display:block;
+	clear: both;
+	> * + * {
+		margin-top: $card-spacing;
+		display: block;
+	}
+}
+
+.card {
+	background: $ul-white;
+	padding: $card-spacing;
+
+	border: 1px solid transparent;
+
+	border-radius: 0.2rem;
+	display: block;
+	//border: solid 1px #dcdcdc;
+	.media {
+		overflow: visible;
+	}
+
+
+	@extend %dropshadow; // from motifs.scss
+	//@extend .clearfix;
+	@include element('disclosure') {
+		border: none;
+		background-color: transparent;
+		color: $ul-blue-dark;
+		margin: 0;
+		transition: all linear 200ms;
+		outline: none;
+
+		@include modifier('active') {
+			transform: rotate(90deg);
+		}
+	}
+
+	@include modifier('child') {
+		margin-left: 3 * $card-spacing;
+	}
+
+	@include modifier('info') {
+		border-left: solid 0.3em $ul-blue-medium;
+
+		.highlight {
+			color: $ul-blue-medium;
+		}
+	}
+
+	&, &.stack:before, &.stack:after {
+		box-shadow: $drop-shadow;
+
+			.stack:hover & {
+				box-shadow: $drop-shadow-hover;
+			}
+	}
+
+	&.stack {
+		position: relative;
+		display: block;
+		cursor: pointer;
+		//z-index: 10;
+		&:before, &:after {
+			position: absolute;
+			height: 100%;
+			content: " ";
+			transition: all ease 200ms;
+			display: block;
+			border-radius: 0.2rem;
+			background: #fff;			
+		}
+
+		$pseudo-spacing-constant: 4px;
+
+		&:hover {
+			&:before {
+				top: 3px * 2;
+			}
+
+			&:after {
+				top: 6px * 2;
+			}
+		}
+
+
+		&:before {
+			$depth: 1;
+			z-index: $depth * -1;
+			//width: calc(100%-20px);
+			left: $pseudo-spacing-constant * $depth * 2;
+			right: $pseudo-spacing-constant * $depth * 2;
+			top: 3px;
+		}
+
+		&:after {
+			$depth: 2;
+			z-index: $depth * -1;
+			//width: calc(100%-20px);
+			left: $pseudo-spacing-constant * $depth * 2;
+			right: $pseudo-spacing-constant * $depth * 2;
+			top: 6px;
+		}
+	}
+
+	@include modifier('success') {
+		border-left: solid 0.3em $ul-green-medium;
+
+		.highlight {
+			color: $ul-blue-medium;
+		}
+	}
+
+	@include modifier('danger') {
+		border-left: solid 0.3em $ul-red;
+
+		.highlight {
+			color: $ul-red;
+		}
+	}
+
+	@include modifier('warning') {
+		border-left: solid 0.3em $ul-yellow-medium;
+
+		.highlight {
+			color: $ul-yellow-medium;
+		}
+	}
+
+	@include modifier('inactive') {
+		border-left: solid 0.3em $ul-gray-98a8bc;
+
+		.highlight {
+			color: $ul-gray-98a8bc;
+		}
+	}
+
+	@include modifier('draft') {
+		border-left: solid 0.3em $ul-action-primary;
+
+		.highlight {
+			color: $ul-action-primary;
+		}
+	}
+
+	@include modifier('active') {
+		border-left: solid 0.3em $ul-green-medium;
+
+		.highlight {
+			color: $ul-green-medium;
+		}
+	}
+
+    @include modifier('other-options'){
+        padding: 2rem;
+    }
+
+    @include modifier('three-dot-menu'){
+        padding: 1.2rem;
+    }
+
+	@include element('header') {
+		h1, h2, h3, h4, h5, h6 {
+		}
+	}
+
+	@include element('section') {
+	}
+
+	@include element('main') {
+		border: solid 1px $ul-gray-light-blue;
+		border-bottom: none;
+		padding: 5px 5px 0 5px;
+		margin-bottom: 0;
+	}
+
+	@include element('child') {
+		border: solid 1px $ul-gray-light-blue;
+		border-top: none;
+		padding: 0 5px 5px 25px;
+	}
+	/*& + & {
+		margin-top: 1vw;
+	}*/
+}
+
+.card__header, .card__section, .card__footer {
+	& + & {
+		margin-top: $card-spacing;
+		padding-top: $card-spacing;
+		border-top: solid 0.1em $ul-gray-light;
+	}
+}

@@ -1,0 +1,39 @@
+<div id="modal-content-wrapper">
+  <header id="modal-header">
+    <h2 id="modal-title" class="modal-section">
+      <span>LOG IN</span>
+      <a (click)="closeModal()" class="float-right">
+        <img alt="close"
+             [src]="closeModalImagePath" />
+      </a>
+    </h2>
+
+  </header>
+  <section id="modal-body" class="panel-body modal-section">
+    <div class="row append-bottom padding-bottom-10">
+      <div class="col-md-6 col-sm-12">
+        <label for="txtAccountNum" class="font-bold">Email</label>
+        <div class="w-snew">
+          <input class="form-control inputCntrl" type="text" />
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="txtAccountNum" class="font-bold">Password</label>
+        <div class="w-snew">
+          <input class="form-control inputCntrl" type="text" />
+        </div>
+      </div>
+    </div>
+    <div>
+      <span class="align-center">
+        If you have been assigned an account by a CNG admin,
+        enter your desired password in the form above.
+      </span>
+    </div>
+  </section>
+
+
+  <footer id="modal-footer" class="login-section">
+    <input type="button" value="SIGN IN" class="btn btn-dark-blue" />
+  </footer>
+</div>

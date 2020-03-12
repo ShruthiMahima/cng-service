@@ -1,0 +1,16 @@
+@import "../scss/Colors.scss";
+
+.adminLoginLink {
+  text-decoration: none;
+  cursor: pointer;
+  color: $ul-white;
+  float: right;
+  font-size: 1rem;
+  margin-right: 30px;
+
+
+  &:hover, &:focus {
+    //color: $ul-gray-dark1;
+    text-decoration: underline;
+  }
+}

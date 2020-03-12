@@ -1,0 +1,56 @@
+<div id="modal-content-wrapper">
+  <header id="modal-header">
+    <h2 id="modal-title" class="modal-section">
+      CERTIFICATION SCHEME
+      <a (click)="closeModal()" style="float:right;">
+        <img alt="close"
+             [src]="closeModalImagePath" />
+      </a>
+    </h2>
+
+  </header>
+  <section id="modal-body" class="panel-body modal-section">
+    <div class="row append-bottom padding-bottom-10">
+      <div class="col-md-12 col-sm-12">
+        <label for="txtAccountNum" class="font-bold">Name</label>
+        <div class="certData">
+          <span>{{scheme.name}}</span>
+        </div>
+      </div>
+      <br />
+    </div>
+    <div class="row append-bottom padding-bottom-10">
+      <div class="col-md-4 col-sm-12">
+        <label for="txtAccountNum" class="font-bold">Prefix</label>
+        <div class="certData">
+          <span>{{scheme.prefix}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label for="txtAccountNum" class="font-bold">Number</label>
+        <div class="certData">
+          <span>{{scheme.number}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label for="txtAccountNum" class="font-bold">Suffix</label>
+        <div class="certData">
+          <span>{{scheme.suffix}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="row append-bottom padding-bottom-10">
+      <div class="col-md-12 col-sm-12">
+        <label for="txtAccountNum" class="font-bold">Description</label>
+        <div class="certData">
+          <span>{{scheme.description}}</span>
+        </div>
+      </div>
+      <br />
+    </div>
+  </section>
+
+
+  <footer id="modal-footer">
+  </footer>
+</div>

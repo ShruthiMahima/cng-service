@@ -1,0 +1,81 @@
+<div class="white-bg">
+  <article class="card">
+    <table class="searchSchemeTable">
+      <tr>
+        <td class="searchSchemeTable__search-col">
+          <input class="form-control" type="text" [(ngModel)]="filter.certificationScheme" placeholder="Search" />
+        </td>
+        <td>
+          <input type="button" class="btn btn-dark-blue" (click)="searchCertificationScheme()" value="Search" />
+        </td>
+      </tr>
+    </table>
+  </article>
+</div>
+<br />
+<div class="white-bg">
+  <article class="card border-bottom">
+    <header class="card__header">
+      <div class="media">
+        <div class="media-body">
+          <h2>Certification Schemes</h2>
+        </div>
+      </div>
+    </header>
+  </article>
+  <article class="card">
+    <div class="media">
+      <div class="media-body align-right cert-pagination" *ngIf="certificationSchemes.length>0">
+        <!--<app-pagination  [totalRecords]="9" [recordsPerPage]="filter.pageSize" (onPageChange)="displayActivePage($event)"></app-pagination>-->
+      </div>
+    </div>
+  </article>
+</div>
+<div class="gray-bg">
+  <table class="certificationTable">
+    <thead>
+      <tr>
+        <td class="align-center font-bold">Scheme</td>
+        <td class="align-center font-bold">Last Used Certificate Number</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="certificationTable__row" *ngFor="let scheme of certificationSchemes">
+        <td class="certificationTable__row--scheme-cell">
+          <div class="card">
+            <div class="media">
+              <section class="media-body">
+                <header class="card__header">
+                  <h3>
+                    <a class="certificationLink" (click)="openModal(scheme)">
+                      <span>
+                        {{scheme.name}}
+                      </span>
+                    </a>
+                  </h3>
+                </header>
+                <section class="card__section">
+                  <div class="media">
+                    <div class="media-body">
+                      <dl class="inline text-metadata">
+                        <dt class="no-border"></dt>
+                        <dd class="highlight"><span>{{scheme.description}}</span></dd>
+                      </dl>
+                    </div>
+                  </div>
+                </section>
+              </section>
+            </div>
+          </div>
+        </td>
+        <td class="certificationTable__row--cell align-center">
+          <span>{{scheme.prefix}}{{scheme.number}}{{scheme.suffix}}</span>
+        </td>
+        <td class="certificationTable__row--cell align-center">
+          <input type="button" (click)="generateNumber(scheme)" value="Generate Number" class="btn btn-dark-blue" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,7 @@
+<div>
+  <span>{{totalRecords}}&nbsp;results</span>
+  <span>Page</span>
+  <select (change)="onClickPage()" [(ngModel)]="activePage">
+    <option *ngFor="let page of pages">{{page}}</option>
+  </select>
+</div>

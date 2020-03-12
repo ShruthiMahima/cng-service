@@ -1,0 +1,154 @@
+﻿@mixin loopPadding($pUnit:0,$paddingUnit:0, $i:0) {
+	.#{padding-}#{$pUnit*$i} {
+		padding: $paddingUnit*$i !important
+	}
+
+	.#{padding-left-}#{$pUnit*$i} {
+		padding-left: $paddingUnit*$i !important
+	}
+
+	.#{padding-right-}#{$pUnit*$i} {
+		padding-right: $paddingUnit*$i !important
+	}	
+
+	.#{padding-bottom-}#{$pUnit*$i} {
+		padding-bottom: $paddingUnit*$i !important
+	}
+
+	.#{padding-top-}#{$pUnit*$i} {
+		padding-top: $paddingUnit*$i !important
+	}
+}
+
+@mixin loopMargin($mUnit:0, $marginUnit:0, $isMarginPerc:0, $i:0) {
+	$percSuffix:'';
+	@if $isMarginPerc == 1 {
+		$percSuffix:'-perc';
+	}
+	.#{margin}#{$percSuffix}#{-$mUnit*$i} {
+		margin: $marginUnit*$i !important
+	}
+
+	.#{margin-top}#{$percSuffix}#{-$mUnit*$i} {
+		margin-top: $marginUnit*$i !important
+	}
+
+	.#{margin-bottom}#{$percSuffix}#{-$mUnit*$i} {
+		margin-bottom: $marginUnit*$i !important
+	}
+
+	.#{margin-right}#{$percSuffix}#{-$mUnit*$i} {
+		margin-right: $marginUnit*$i !important
+	}
+
+	.#{margin-left}#{$percSuffix}#{-$mUnit*$i} {
+		margin-left: $marginUnit*$i !important
+	}
+}
+
+@mixin styling($min:0, $max:0, $factor:0, $pUnit:0,$paddingUnit:0, $isPadding:0, $mUnit:0, $marginUnit:0, $isMargin:0, $isMarginPerc:0) {
+	@if $factor == 10 or $factor == 1 {
+		@for $i from $min through $max {
+			@if $isPadding == 1 {
+				@include loopPadding($pUnit,$paddingUnit,$i);
+			}
+			@if $isMargin == 1 {
+				@include loopMargin($mUnit,$marginUnit,$isMarginPerc,$i);
+			}
+		}
+	}
+	@else if $factor == 5 {
+		@for $i from $min through $max {
+			@if $i % 2 != 0 {
+				@if $isPadding == 1 {
+					@include loopPadding($pUnit,$paddingUnit,$i);
+				}
+				@if $isMargin == 1 {
+					@include loopMargin($mUnit,$marginUnit,$isMarginPerc,$i);
+				}
+			}
+		}
+	}
+	@else if $factor == 'odd' {
+		@for $i from $min through $max {
+			@if $i % 2 != 0 {
+				@if $isPadding == 1 {
+					@include loopPadding($pUnit,$paddingUnit,$i);
+				}
+				@if $isMargin == 1 {
+					@include loopMargin($mUnit,$marginUnit,$isMarginPerc,$i);
+				}
+			}
+		}
+	}
+	@else if $factor == 'even' {
+		@for $i from $min through $max {
+			@if $i % 2 == 0 {
+				@if $isPadding == 1 {
+					@include loopPadding($pUnit,$paddingUnit,$i);
+				}
+				@if $isMargin == 1 {
+					@include loopMargin($mUnit,$marginUnit,$isMarginPerc,$i);
+				}
+			}
+		}
+	}
+}
+
+@mixin getHeight($hUnit:0,$heightUnit:0, $isHeightPerc:0, $i:0) {
+	$percSuffix:'';
+	@if $isHeightPerc == 1 {
+		$percSuffix:'-perc';
+	}
+	.#{height}#{$percSuffix}#{-$hUnit*$i} {
+		height: $heightUnit*$i !important;
+	}
+}
+
+@mixin getWidth($wUnit:0,$widthUnit:0, $isWidthPerc:0, $i:0) {
+	$percSuffix:'';
+	@if $isWidthPerc == 1 {
+		$percSuffix:'-perc';
+	}
+	.#{width}#{$percSuffix}#{-$wUnit*$i} {
+		width: $widthUnit*$i !important;
+	}
+}
+
+@mixin createHeightWidthClasses($min:0, $max:0, $factor:0, $hUnit:0,$heightUnit:0, $isHeight:0, $isHeightPerc:0, $wUnit:0, $widthUnit:0, $isWidth:0, $isWidthPerc:0) {
+	@if $factor == 10 or $factor == 1 {
+		@for $i from $min through $max {
+			@if $isHeight == 1 {
+				@include getHeight($hUnit,$heightUnit,$isHeightPerc,$i);
+			}
+			@if $isWidth == 1 {
+				@include getWidth($wUnit,$widthUnit,$isWidthPerc,$i);
+			}
+		}
+	}
+	@else if $factor == 5 {
+		@for $i from $min through $max {
+			@if $i % 2 != 0 {
+				@if $isHeight == 1 {
+					@include getHeight($hUnit,$heightUnit,$isHeightPerc,$i);
+				}
+				@if $isWidth == 1 {
+					@include getWidth($wUnit,$widthUnit,$isWidthPerc,$i);
+				}
+			}
+		}
+	}
+}
+
+@mixin setBorder($w:null, $s:null, $c:null,$attr:null) {
+	@if $attr != null and $w != null and $s != null and $c != null {
+		#{$attr}: $w $s $c !important;
+	}
+}
+
+@mixin createBorderClasses($width:null, $style:null, $color:null, $top:null, $bottom:null, $left:null, $right:null) {
+	@include setBorder($w:$width, $s:$style, $c:$color,$attr:$top);
+	@include setBorder($w:$width, $s:$style, $c:$color,$attr:$bottom);
+	@include setBorder($w:$width, $s:$style, $c:$color,$attr:$left);
+	@include setBorder($w:$width, $s:$style, $c:$color,$attr:$right);
+}
